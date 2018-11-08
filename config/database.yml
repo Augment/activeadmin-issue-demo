@@ -1,13 +1,10 @@
----
+default: &default
+  adapter: postgresql
 
-development:
-  url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
+development: &development
+  <<: *default
+  database: augment_development
 
-test:
-  url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
-
-staging:
-  url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
-
-production:
-  url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>
+test: &test
+  <<: *default
+  database: augment_test
